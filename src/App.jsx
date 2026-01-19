@@ -11,9 +11,15 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 function App() {
   const projects = [
-    { title: "Curved Horizon Two", img: "/img/img1.jpeg" },
-    { title: "Magic is Here", img: "/img/img4.jpg" },
-    { title: "Welcome to GK World", img: "/img/img3.jpg" },
+    {
+      title: "Curved Horizon Two",
+      img: `${import.meta.env.BASE_URL}img/img1.jpeg`,
+    },
+    { title: "Magic is Here", img: `${import.meta.env.BASE_URL}img/img4.jpg` },
+    {
+      title: "Welcome to GK World",
+      img: `${import.meta.env.BASE_URL}img/img3.jpg`,
+    },
   ];
 
   useGSAP(() => {
@@ -216,7 +222,10 @@ function App() {
       </section>
 
       <section className="cards">
-        <IntroCard title="Curved Horizon" img="/img/cap3-square.jpg" />
+        <IntroCard
+          title="Curved Horizon"
+          img={`${import.meta.env.BASE_URL}img/cap3-square.jpg`}
+        />
 
         {projects.map((proj, index) => (
           <ProjectCard
