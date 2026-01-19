@@ -12,13 +12,25 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 function App() {
   const projects = [
     {
-      title: "Curved Horizon Two",
+      title: "Digital Horizons",
+      description:
+        "An immersive web experience blending 3D parallax effects with seamless scroll interactions. Built with WebGL and GSAP for next-level storytelling.",
       img: `${import.meta.env.BASE_URL}img/img1.jpeg`,
+      year: "2025",
     },
-    { title: "Magic is Here", img: `${import.meta.env.BASE_URL}img/img4.jpg` },
     {
-      title: "Welcome to GK World",
+      title: "Motion Canvas",
+      description:
+        "Experimental portfolio showcasing the intersection of code and creativity. Every pixel choreographed with precision using modern animation libraries.",
+      img: `${import.meta.env.BASE_URL}img/img4.jpg`,
+      year: "2024",
+    },
+    {
+      title: "Infinite Scroll",
+      description:
+        "A journey through visual narratives powered by smooth scrolling mechanics. Designed to captivate, engineered to perform flawlessly.",
       img: `${import.meta.env.BASE_URL}img/img3.jpg`,
+      year: "2024",
     },
   ];
 
@@ -213,17 +225,25 @@ function App() {
         });
       }
     });
-  });
+
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      gsap.ticker.remove(lenis.raf);
+      lenis.destroy();
+    };
+  }, []);
 
   return (
     <>
       <section className="intro">
-        <h1>We design space that don't just exist</h1>
+        <h1>Crafting digital experiences that move, inspire, and perform</h1>
       </section>
 
       <section className="cards">
         <IntroCard
-          title="Curved Horizon"
+          title="Pixel Perfect Studios"
+          description="Where creativity meets code. We transform ideas into scroll-stopping digital masterpieces powered by cutting-edge animation technology."
           img={`${import.meta.env.BASE_URL}img/cap3-square.jpg`}
         />
 
@@ -231,6 +251,7 @@ function App() {
           <ProjectCard
             key={index}
             title={proj.title}
+            description={proj.description}
             img={proj.img}
             isLast={index === projects.length - 1}
           />
@@ -238,7 +259,7 @@ function App() {
       </section>
 
       <section className="outro">
-        <h1>Architecture reimagined for the virtual age</h1>
+        <h1>Let's create something extraordinary together</h1>
       </section>
     </>
   );
